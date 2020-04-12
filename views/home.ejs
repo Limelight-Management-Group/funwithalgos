@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fun with algos</title>
+</head>
+<body>
+
+  <P><strong><H1>#QUARANTINEANDCODE</H1></strong></P>
+
+  <div class="stacks">
+    <h2>
+      Stacks Attack
+    </h2>
+    <p>
+      I am taking this time to have fun with algorithms and data structures; don't miss out on the fun. 
+    </p>
+    <p>
+      This section will focus on stacks; the way that they work and some of the built-in methods of an array to implement a stack. Today, we will use a stack to see if a word is a palindrome.
+    </p>
+
+    <h3>Is this word a palindrome?</h3>
+
+    <h5>A palindrome is a word that is spelled the same way--forward and backwards.</h5>
+
+    <p><h4>
+      To begin, I will need three variables:
+    </h4></p>
+
+    <ol>
+      <li>
+        letters' array - var letters = [] 
+      </li>
+      <li>
+        words' string - var word = "racecar"
+      </li>
+      <li>
+        rwords' empty string - var rwords = ""
+      </li>
+    </ol>
+    <h5>PUSH</h5>
+    <p>
+      Once you have these variables declared, the next step is to put the letters of each word into a stack. In case you're wondering, a stack is a storage container for various data types; the data is stored and indexed in the order that it is being added.
+    </p>
+    <ul>
+      <li>
+        To put the items in the array, we will need a method to accomplish this. Luckily, arrays have a method built in called "push".</li>
+    </ul>
+    <ul>
+      <li>
+        To use a <i>.push()</i>, you will need to have an array created that you will "push" the values into; this is why we created the <i>letters'</i> array.
+      </li>
+      <li>
+        The next step is to call the .push on the data that you want to be pushed in.
+
+        i.g. review the following: letters.push(word[i]);
+
+        This will push the characters of the word into the letters array. 
+      </li>
+      <li>
+        The only problem is you will only get the first letter. You will need to (iterate) go through each letter of the word, if you want to see if it is indeed a palindrome.
+      </li>
+      <li>
+        The correct implementation will requre a looping mechanism to engage with each character of the word. Many programming languages have for loops. These loops allow you to <i>"loop"</i> through an array object. (everything is an object in javascript, FYI).
+
+        for(var i = 0; i< word.length; i++){
+          letters.push(word[i]);
+        }
+        <br>
+        What this is doing is looking at the length of a word and starting a counter at 0; you then count the length of the characters of the word and execute the .push() on each iteration adding 1 to the i value until it is equal to the total word count(word.length).  
+      </li>
+    </ul>
+
+        <h5>POP</h5>
+
+    <p>Now that you've added the data in the </p>
+
+  </div>
+
+  <script src="../js/main.js" type="text/javascript"></script>
+</body>
+</html>

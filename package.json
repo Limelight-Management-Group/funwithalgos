@@ -1,0 +1,33 @@
+{
+  "name": "funwithalgos",
+  "version": "1.0.0",
+  "description": "fun with algorithm and data.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Limelight-Management-Group/funwithalgos.git"
+  },
+  "keywords": [
+    "algorithm",
+    "data",
+    "structures",
+    "covid19",
+    "#quarantineandcode"
+  ],
+  "author": "wayne banks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Limelight-Management-Group/funwithalgos/issues"
+  },
+  "homepage": "https://github.com/Limelight-Management-Group/funwithalgos#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3",
+    "path": "^0.12.7"
+  }
+}
