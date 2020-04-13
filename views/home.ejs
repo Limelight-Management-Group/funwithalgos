@@ -39,7 +39,7 @@
     </ol>
     <h5>PUSH</h5>
     <p>
-      Once you have these variables declared, the next step is to put the letters of each word into a stack. In case you're wondering, a stack is a storage container for various data types; the data is stored and indexed in the order that it is being added.
+      Once you have these variables declared, the next step is to put the letters of each word into a stack. In case you're wondering, a stack is a storage container for various data types; the data is stored and indexed in the order that it is being added FIFO(First In First Out).
     </p>
     <ul>
       <li>
@@ -72,7 +72,48 @@
 
         <h5>POP</h5>
 
-    <p>Now that you've added the data in the </p>
+    <p>
+      Now that you've added the data in the stack, we now need to get the reverse order of that word, so we can determine if they are duplicates; if they are, the word is a palindrome. An array has a method called .pop() that can be used to do this. While the <i>push</i> method is <strong>FIFO</strong>, the <i>pop</i> method is Last In First Out. 
+    </p>
+    <ul>
+      <li>
+        To use this method, you will call .pop() on the <i>letters array</i>. This will give you the word in the reverse order which we are calling <i>rword</i>.
+
+        rword =+ letters.pop();
+      </li>
+      <li>
+        Once again, the method will only work on the the first character of the indexed word, so we will need to create a loop that will iterate through all of the values in the array.
+      </li>
+      <li>For this purpose, we will use the <i>For Loop</i>.
+        for(var i = 0; i < word.length; i++){
+          rword += letters.pop();
+        }
+      </li> 
+      
+      <li>
+        For the length of the word that you are checking, you want to pop that number of characters from the array and store it in the reverse word string <i>rword</i>.
+      </li>
+    </ul>
+      <p>
+        Now that we have both the word and the word in  revese, <i>rword</i>, we can do a comparison of the two, to determine if they are duplicates.
+
+        If they are, the word is a palindrome.
+      </p>
+      
+      <li>
+        To compare to values in Javascript, you can use what is called a <i>comparison operator</i>. There are various operators, but in this case we will use the <i><b>"tripple equals"</b></i> comparison. 
+      </li>
+      <li>
+        You wrap both values that you are comparing in an <i>if</i> statement. If the two values are the same, we can log to the console the word is a palindrome; they are not, we will indicate that as well.
+
+        if(rword === word){
+          console.log(word, "is a palindrome")
+        }
+        else{
+          console.log(word, "is not a palindrome")
+        }
+      </li>
+
 
   </div>
 
