@@ -63,10 +63,10 @@ var Stack = function(){
   }
 
 }
-
+// Here I use the keyword new to create another instance of the Stack class.
 var newStack = new Stack();
 
-stackarr = [1,2,3,4,5,6,7,8,9,10,11]
+stackarr = [1,2,3,4,5,6,7,8,9,10,11];
 for(var i = 0; i < stackarr.length; i++){
   newStack.push(stackarr[i]);
 }

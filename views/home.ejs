@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>Fun with algos</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 
   <P><strong><H1>#QUARANTINEANDCODE</H1></strong></P>
 
-  <div class="stacks">
+  <div class="arraysAsStacks">
     <h2>
       Stacks Attack
     </h2>
@@ -113,8 +114,158 @@
           console.log(word, "is not a palindrome")
         }
       </li>
+  </div>
+  <div class="createMyStack">
+    <h2>Creating a stack without using an array</h2>
 
+    <p>
+      If you want to create stack without an array, you can use a Stack class contructor.
+    </p>
+    <p>  
+      This class will have the following methods:
+    </p>  
+      <ol>
+        <li>
+          .push()
+        </li>
+        <li>
+          .pop()
+        </li>
+        <li>
+          .size()
+        </li>
+      </ol>
+    <p>
+      In addition you will need to add a .count and a .storage property on this Stack object contructor using the <i>key word <b>this</b></i>. <strong>"This"</strong> is very powerful in javascript, esspecially in this case; it will allow you to dynamically attach this property to all of the objects that are created with this contructor.
+    </p>
+    <p>
+      The next step is create the contructor function.
+    </p>
+    <ul>
+      <li>
+        //Notice that the constructor uses the capital S; this indicates it is a contructor:
+        <br>
+        var Stack = function(){
+        <div class="marginLeft15px">
+        <br>
+          <b class="marginLeft15px">this.count = 0;</b>
+          <br>
+          <b class="marginLeft15px">this.storage = {};</b>
 
+          <br>
+          //Adds value to the end of the stack
+          <br>
+          this.push = function(value){
+          <br>
+            <p class="marginLeft15px">
+            //the index for the values in the storage is being set by the count that began at 0 above.
+
+            <br>
+            this.storage[this.count] = value;
+            <br>
+            // here I iterate the count by 1 with ++
+            <br>
+            this.count++;
+            </p>
+          }
+          </div>  
+        <br>
+        <div class="marginLeft15px">
+            // Removes and returns the values at the end of the stack
+            <br>
+          this.pop = function(){
+          <div class="marginLeft20px">
+            if(this.count === 0){
+            <br>
+              <p class="marginLeft25px marginTopNeg10px"><br>
+                <b>return undefinded;</b>
+              </p>
+            }
+            <br>
+            this.count--;
+            <br>
+            var result = this.storage[this.count];
+            <br>
+            <b>delete</b> this.storage[this.count];
+            <br>
+            <b>return</b> result
+            <br>
+            }
+          </div>
+
+            <p class="marginLeft15px">
+            // returns the size of the stack
+            <br>
+            this.size = function(){
+            <br>
+             <b class="marginLeft20px">return this.count++</b>;
+            <br> 
+            }
+          <br>  
+            </p>
+            <p class="marginLeft15px">
+            // returns the value at the end of the stack.
+            <br>
+            this.peek = function(){
+            <br>
+             <b class="marginLeft20px">return this.count[this.count-1]</b>;
+            <br> 
+            }
+          <br>  
+            </p>            
+          }
+          </div>  
+        <br>
+
+        </div>
+        }
+        <br>
+      </li>
+    </ul>
+       <p>
+       Once you have your Stack constructor function, you can try it out, by calling the <i>keyword <strong>new</strong></i>.
+       </p> 
+      <ul>
+      <li>
+        The keyword <i>new</i> is used to call a new instance of an object constructor class; in this case the Stack class.
+      </li>
+      <li>
+        //Here we create a new Stack instace called <i>newStack</i>.
+        <br> 
+        var newStack = new Stack();
+      </li>
+      <li>
+        //I create an array of values that will be pushed into the the <i>newStack</i> object.
+        <br>
+        stackArr = [1,2,3,4,5,6,7,8,9,10,11];
+      </li>
+      <p>
+        for(var i = 0; i < stackArr.length; i++){
+        <br>
+        <i class="marginLeft15px">newStack.push(stackarr[i]);</i>
+        <br>
+        }
+      </p>
+      <br>
+      Call the .peek() method on <i>newStack</i>.
+      <br>
+      <br>
+      //check the last value added to the stack(11).
+      <li>
+        console.log(newStack.peek())
+      </li>
+      //remove the last value added to the stack(11).
+      <li>
+        console.log(newStack.pop())
+      </li>
+      //check the value at the end of stack, again(10).
+      <li>
+        console.log(newStack.peek())
+      </li>
+      </ul>
+      <p>
+        If implemented correctly, you should have returned 10, after your .pop() removed the 11.
+      </p> 
   </div>
 
   <script src="../js/main.js" type="text/javascript"></script>
