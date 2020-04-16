@@ -75,5 +75,103 @@ console.log(newStack.pop())
 console.log(newStack.peek())
 console.log(newStack.size() + ': items are in the stackarr!')
 
+/*Sets*/
 
+function mySet(){
+  //the collection array will hold the set.
+  var collection = [];
+  //this method will check to see if an element is present; true or false.
+  this.has = function(element){
+    return (collection.indexOf(element) !== -1);
+  };
+  //this method will return the entire collection array.
+  this.values = function(){
+    return collection;
+  };
+  // This adds an element to the set
+  this.add = function(element){
+    if(!this.has(element)){
+      collection.push(element);
+      return true;
+    }
+    return false;
+  };
+  // This will remove an element from the collection's array.
+  this.remove = function(element){
+    if(this.has(element)){
+      index = collection.indexOf(element);
+      collection.splice(index, 1);
+    }
+    return false;
+  };
+  //this will show the size of the collecion array.
+  this.size = function(){
+    return collection.length;
+  };
 
+  //this will return union of two sets.
+  this.union = function(otherSet){
+    var unionSet = new mySet();
+    var firstSet = this.values();
+    var secondSet = otherSet.values();
+
+    firstSet.forEach(function(e){
+      unionSet.add(e);
+    })
+    return unionSet;
+  };
+
+  //this will return the intersection of two sets as one.
+  this.intersection = function(otherSet){
+    var intersectionSet = new mySet();
+    var firstSet = this.values();
+
+    firstSet.forEach(function(e){
+      if(otherSet.has(e)){
+        intersectionSet.add(e);
+      }
+    });
+    return intersectionSet;
+  };
+
+  //this will return a new set with the difference between two sets
+  this.difference = function(otherSet){
+    var differentSet = new mySet();
+    var firstSet = this.values();
+    firstSet.forEach(function(e){
+      if(!otherSet.has(e)){
+        differentSet.add(e);
+      }
+    });
+    return differentSet;
+  };
+
+  //This will test if the set is a subset of a different set.
+  this.subset = function(otherSet){
+    var firstSet = this.values();
+    return firstSet.every(function(value){
+      return otherSet.has(value)
+    });
+  };
+}
+
+var set1 = new mySet();
+var set2 = new mySet();
+
+var arrayA = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var arrayB = ['a','b','c'];
+var arrayC = ['l','m','n','o','p','q','r','s'];
+
+for(var i = 0; i < arrayA.length; i++){
+  set1.add(arrayA[i]);
+  console.log(set1.values());
+}
+for(var i = 0; i < arrayC.length; i++){
+  set2.add(arrayC[i]);
+  console.log(set2.values());
+}
+if(set2.subset(set1)){
+  console.log('it is a subset.')
+}else{
+  console.log('it is not a subset.')
+}

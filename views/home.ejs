@@ -267,6 +267,208 @@
         If implemented correctly, you should have returned 10, after your .pop() removed the 11.
       </p> 
   </div>
+  <h2>Working with Sets</h2>
+
+  <p>
+    The next section will focus on creating and using a Set constructor class to create set instance  collections.
+  </p>
+  <p>
+    To create a set, you will need to create a constructor function and a collection array; this will hold your set.
+    <p class="container">
+      function mySet(){
+        <br>
+        <b class="marginLeft15px">var collection = []</b>;
+        <br>
+    </p> 
+    <ul>
+      <li>
+      this.has = function(element){
+      <br>
+        <strong class="marginLeft15px">return (collection.indexOf(element) !== -1)</strong>
+        <br>
+      };
+      </li>
+      <li>
+      this.values = function(){
+      <br>
+        <strong class="marginLeft15px">return collection</strong>
+        <br>
+      };
+      </li>
+      <li>
+      this.add = function(element){
+      <br>
+        <i class="marginLeft15px">if(!this.has(element)){</i>
+        <br>
+        <i class="marginLeft20px">collection.push(element)</i>;
+        <br>
+        <b class="marginLeft20px">return true</b>;
+        <p class="marginLeft15px">};</p>
+        <b class="marginTopNeg10px marginLeft15px">return false</b>;
+        <br>
+      };
+      </li>
+            <li>
+      this.remove = function(element){
+      <br>
+        <i class="marginLeft15px">if(this.has(element)){</i>
+        <br>
+        <i class="marginLeft20px">index = colleciton.indexOf(element)</i>;
+        <br>
+        <i class="marginLeft20px">
+         collection.splice(index, 1); 
+        </i>
+        <br>
+        <b class="marginLeft20px">return false</b>;
+        <p class="marginLeft15px">};</p>
+      
+      };
+      </li> 
+      <li>
+      this.size = function(){
+      <br>
+        <strong class="marginLeft15px">return collection.length</strong>;
+        <br>
+      };
+      </li>
+      <li>
+      this.union = function(otherSet){
+      <br>
+        <i class="marginLeft15px">var unionSet = new mySet()</i>;
+        <br>
+        <i class="marginLeft15px">var firstSet = this.values()</i>;
+        <br>
+        <i class="marginLeft15px">var secondSet = otherSet.values()</i>;
+        <br>
+        <br>
+        <i class="marginLeft15px">firstSet.forEach(function(e){
+        </i>
+        <br>
+        <i class="marginLeft20px">unionSet.add(e)</i>;
+        <br>
+        <i class="marginLeft15px">})</i>
+        <br>
+        <b class="marginTopNeg10px marginLeft15px">return unionSet</b>;
+        <br>
+      };
+      </li>
+      <li>
+      this.intersection = function(otherSet){
+      <br>
+        <i class="marginLeft15px">var intersectionSet = new mySet()</i>;
+        <br>
+        <i class="marginLeft15px">var firstSet = this.values()</i>;
+        <br>
+      
+        <br>
+        <i class="marginLeft15px">firstSet.forEach(function(e){
+        </i>
+        <br>
+        <i class="marginLeft20px">if(otherSet.has(e)){</i>
+        <br>
+        <i class="marginLeft25px">intersectionSet.add(e)</i>
+        
+        <br>
+        <i class="marginLeft20px">}</i>
+        <br>
+        <i class="marginLeft15px">})</i>;
+        <br>
+        <b class="marginTopNeg10px marginLeft15px">return intersectionSet</b>;
+        <br>
+      };
+      </li>
+      <li>
+      this.difference = function(otherSet){
+      <br>
+        <i class="marginLeft15px">var differentSet = new mySet()</i>;
+        <br>
+        <i class="marginLeft15px">var firstSet = this.values()</i>;
+        <br>
+      
+        <br>
+        <i class="marginLeft15px">firstSet.forEach(function(e){
+        </i>
+        <br>
+        <i class="marginLeft20px">if(!otherSet.has(e)){</i>
+        <br>
+        <i class="marginLeft25px">differentSet.add(e)</i>
+        
+        <br>
+        <i class="marginLeft20px">}</i>
+        <br>
+        <i class="marginLeft15px">})</i>;
+        <br>
+        <b class="marginTopNeg10px marginLeft15px">return differentSet</b>;
+        <br>
+      };
+      </li>
+      <li>
+      <i>this.subset = function(otherSet){</i>
+      <br>
+      <i class="marginLeft15px">var firstSet = this.values()</i>;
+      <br>
+        <i class="marginLeft15px"><strong>return</strong> firstSet.every(function(value){</i>
+        <br>
+        <i class="marginLeft25px"><strong>return</strong> otherSet.has(value)</i>
+        <br>
+      <i class="marginLeft15px">};</i>
+      </li>
+      <li>
+      <i>};</i>
+      <br>
+      </li>                                     
+    </ul>
+      }
+    <div>
+    <p>
+    var set1 = new mySet();
+      <br>
+    var set2 = new mySet();
+    <br>
+    var arrayA = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    <br>
+    var arrayC = ['l','m','n','o','p','q','r','s'];
+    <br>
+    <br>
+    <i>
+    for(var i = 0; i < arrayA.length; i++){
+    </i>
+    <br>
+    <i class="marginLeft15px">set1.add(arrayA[i])</i>;
+    <br>
+    <i class="marginLeft15px">console.log(set1.values())</i>;
+    <br>
+    </i>
+    <i>}</i>
+    <br>
+    <i>
+    for(var i = 0; i < arrayC.length; i++){
+    </i>
+    <br>
+    <i class="marginLeft15px">set2.add(arrayC[i])</i>;
+    <br>
+    <i class="marginLeft15px">console.log(set2.values())</i>;
+    <br>
+    <i>}</i>
+    <br>
+    <i>
+    if(set2.subset(set1)){
+    </i>
+    <br>
+    <i class="marginLeft15px">console.log('it is a subset.')</i>;
+    <br>
+    }else{
+    <br>
+    <i>console.log('it is not a subset.')</i>;
+    <br>
+    <i>}</i>
+    <br>
+    <br>
+    </p>
+    </div>
+  </p>
+
+
 
   <script src="../js/main.js" type="text/javascript"></script>
 </body>
