@@ -229,16 +229,24 @@ queue.size();
 /* Priority Queue */
 
 function PriorityQueue(){
+  //collection array for Priority Queue;
   var collection = [];
+  //this method will print the contents of the collection array;
   this.printCollection = function(){
     (console.log('the entire collection', collection));
   };
+  //this method will take and element and check to see if the queue isEmpty
   this.enqueue = function(element){
+  //if the queue is empty, you can push the element into the collection array
     if(this.isEmpty()){
       collection.push(element);
     } else {
+      //added is set to false and element is placed, based upon priority
+      //if the collection is not empty, the element's priority is compared to the priority of the items in the collection array;
+      //if the prioity of the element is greater than that of the collection array, the element is pushed in.
       var added = false;
         for (var i = 0; i < collection.length; i++) {
+          //if the element's priority is less than that of the item in the array, the element is spliced into the zero index of the array;
           if(element[1] < collection[i][1]){
             collection.splice(i,0,element);
             added = true;
@@ -246,21 +254,26 @@ function PriorityQueue(){
           }      
 
         }
+        //
         if(!added){
           collection.push(element);
         }
     }
   };
+  //this method will remove and return the value at the 0 index; 
   this.dequeue = function(){
     var value = collection.shift(); 
     return value[0];
   };
+  //this will return the collection's 0 index;
   this.front = function(){
     return collection[0];
   };
+  //this is will return the length of the array
   this.size = function(){
     return collection.length;
   };
+  //this will check to see if the collection is empty;
   this.isEmpty = function(){
     return (collection.length === 0);
   };
