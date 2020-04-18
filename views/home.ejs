@@ -279,6 +279,8 @@
         <br>
         <b class="marginLeft15px">var collection = []</b>;
         <br>
+        //The .has() method will return the indexOf the the element in collection, if found.
+        <br>
     </p> 
     <ul>
       <li>
@@ -288,6 +290,7 @@
         <br>
       };
       </li>
+      //The .values() will return all of the values in a collection array.
       <li>
       this.values = function(){
       <br>
@@ -295,6 +298,8 @@
         <br>
       };
       </li>
+      //The .add() will check to see if a collection contains an element; if it does not it pushes the element into the collection and returns true.
+      <br> 
       <li>
       this.add = function(element){
       <br>
@@ -308,7 +313,8 @@
         <br>
       };
       </li>
-            <li>
+      //The method will check to see if an element is present; if it is, the index is set to the element's index; then use the splice(method to remove the element at the index of the element)
+      <li>
       this.remove = function(element){
       <br>
         <i class="marginLeft15px">if(this.has(element)){</i>

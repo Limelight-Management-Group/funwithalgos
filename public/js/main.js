@@ -175,3 +175,101 @@ if(set2.subset(set1)){
 }else{
   console.log('it is not a subset.')
 }
+
+/* Queues */
+
+function Queue (){
+  //storage array for que
+  collection = [];
+  //this will console.log() the contents of the collection storage array;
+  this.print = function(){
+    console.log(collection, "the entire collection");
+  };
+  //this will push elements on to the front of the queue
+  this.enqueue = function(element){
+    collection.push(element);
+  };
+  //this will remove elements from the back of the queue
+  this.dequeue = function(){
+    return collection.shift();
+  };
+  // this will return the element at the front of the queue
+  this.front = function(){
+    return collection[0];
+  };
+  //this will return the length of the collection
+  this.size = function(){
+    return collection.length;
+  };
+  //this will check if the queue is empty
+  this.isEmpty = function(){
+    return (collection.length === 0);
+  };
+}
+
+var queue = new Queue();
+let values = ['a','b','this is the new front','d','e','f','g','h','i','j','k','l'];
+
+for(var i = 0; i < values.length; i++){
+  queue.enqueue(values[i]);
+  // console.log('this is values i:', values[i]);  
+}
+
+queue.print();
+
+queue.dequeue();
+queue.dequeue();
+queue.print();
+queue.front();
+queue.isEmpty();
+queue.size();
+// queue.print();
+
+
+/* Priority Queue */
+
+function PriorityQueue(){
+  var collection = [];
+  this.printCollection = function(){
+    (console.log('the entire collection', collection));
+  };
+  this.enqueue = function(element){
+    if(this.isEmpty()){
+      collection.push(element);
+    } else {
+      var added = false;
+        for (var i = 0; i < collection.length; i++) {
+          if(element[1] < collection[i][1]){
+            collection.splice(i,0,element);
+            added = true;
+            break;
+          }      
+
+        }
+        if(!added){
+          collection.push(element);
+        }
+    }
+  };
+  this.dequeue = function(){
+    var value = collection.shift(); 
+    return value[0];
+  };
+  this.front = function(){
+    return collection[0];
+  };
+  this.size = function(){
+    return collection.length;
+  };
+  this.isEmpty = function(){
+    return (collection.length === 0);
+  };
+
+}
+
+var priorityqueue = new PriorityQueue();
+
+priorityqueue.enqueue(['Limelight', 9]);
+priorityqueue.enqueue(['LMG',1]);
+priorityqueue.enqueue(['other people', 5]);
+priorityqueue.printCollection();
