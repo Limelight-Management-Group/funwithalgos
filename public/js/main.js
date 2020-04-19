@@ -286,3 +286,137 @@ priorityqueue.enqueue(['Limelight', 9]);
 priorityqueue.enqueue(['LMG',1]);
 priorityqueue.enqueue(['other people', 5]);
 priorityqueue.printCollection();
+
+/* Binary Search Trees */
+
+class Node {
+  constructor(data, left = null, right = null){
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+class BinarySearchTree {
+  // the binary search tree constructor sets the root of the tree to null;
+  constructor(){
+    this.root = null;
+  }
+  // the add function takes in data and creates a node assigning the value to this.root; 
+  add(data){
+    const node = this.root;
+    //if this is the first node, the this.root will still be set to null
+    //if node is null, then this.root is assigned to a new node containing the data;
+    if(node === null){
+      this.root = new Node(data);
+      return;
+    } else {
+      //if the root is not null, then the data is compared;  
+      const searchTree = function(node){
+        //if the data passed in is smaller than node.data;
+        if(data < node.data){
+          //we, then, check to see if the left node is null; if it is, we create a new left node with the data passed in assigning to node.left;
+          if(node.left === null){
+            node.left = new Node(data);
+            return;
+            //if node.left is not null, we recursively run searchtree with the added data, until we find a place to put the node;
+          } else if (node.left !== null){
+            //when you run again, there will no longer be a node on the left; that is where you will place the node;
+            return searchTree(node.left);
+          }
+          //once again, we're comparing the data passed in to node.data to see if the passed in data is greater;
+          else if (data > node.data){
+            //if node.right is null; create a new node for the right and add the passed in data;
+            if(node.right === null){
+              node.right = new Node(data);
+              return;
+            //if the node on the right is not null, run the searchtree with node.right, until you find a place to put the node;
+            //when you run again, there will no longer be a node on the right; that is where you will place the node;
+            } else if(node.right !== null) {
+              return searchTree(node.right);
+            }
+          }
+          //if the values are equal, you do not add the node, and you will retrun node;
+        } else {
+          return null;
+        }
+      };
+      return searchTree(node);
+    }
+
+  }
+  findMin(){
+    let current = this.root;
+    while( current.left !== null){
+      current = current.left;
+    }
+    return current.data;
+  }
+  findMax(){
+    let current = this.root;
+    while (current.right !== null){
+      current = current.right;
+    }
+    return current.data;
+  }
+  find(data){
+    let current = this.root;
+    while(current.data !== data){
+      if(data < current.data){
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+      if(current === null){
+        return null;
+      }
+    }
+    return current;  
+  }
+  isPresent(data){
+    let current = this.root;
+    while(current){
+      if(data === current.data){
+        return true;
+      }
+      if(data < current.data){
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+  remove(data){
+    const removeNode = function(node, data){
+      if(node == null){
+        return null;
+      }
+      if(data == node.data){
+        if(node.left == null && node.right = null){
+          return null;
+        }
+        if(node.left == null){
+          return node.right;
+        }
+        if(node.right == null){
+          return node.left;
+        }
+        var tempNode = node.right;
+        while(tempNode.left !== null){
+          tempNode = tempNode.left;
+        }
+        node.data = tempNode.data;
+        node.right = removeNode(node.right, tempNode.data);
+        return node;
+      } else if ( data < node.data) {
+        node.left = removeNode(node.left, data);
+        return node;
+      } else {
+        node.right = removeNode(node.right, data);
+        return node;
+      }
+    }
+  this.root = removeNode(this.root, data);
+  }
+}
